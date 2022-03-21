@@ -1,0 +1,44 @@
+server:
+  port: 8081
+  encoding:
+    charset: UTF-8
+
+spring:
+  mvc:
+    #视图解析器
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    username: root
+    password: 08240030xzh.
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 08240030xzh.
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0ms
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hao.entity
+  configuration:
+    #开启驼峰映射
+    map-underscore-to-camel-case: true
+    # sql日志的打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#showSql
+logging:
+  level:
+    com.hao.mapper: debug
+
